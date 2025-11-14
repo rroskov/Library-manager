@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if edit %}Edit Book{% else %}Add New Book{% endif %}</title>
+</head>
+<body style="font-family:Arial;">
+    <h2>{% if edit %}Edit Book{% else %}Add New Book{% endif %}</h2>
+    <form method="post">
+        <label>Book Name:</label><br>
+        <input type="text" name="title" value="{{ book.title if edit else '' }}" required><br><br>
+        <label>Author Name:</label><br>
+        <input type="text" name="author" value="{{ book.author if edit else '' }}" required><br><br>
+        <label>Genre:</label><br>
+        <input type="text" name="genre" value="{{ book.genre if edit else '' }}" required><br><br>
+        <button type="submit">{% if edit %}Update{% else %}Add{% endif %}</button>
+    </form>
+    <br>
+    <a href="{{ url_for('books_page') }}">⬅ Back to Books</a>
+</body>
+</html>
